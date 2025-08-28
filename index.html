@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!--
+  Simple landing page for shutter repair & upgrade services.
+  This page uses a right‑to‑left layout and Hebrew copy to match the target audience.
+  Images are stored under assets/images and referenced below.
+  Note: this is a simplified version of the original landing page without exit‑intent popups.
+-->
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="תיקון ושדרוג תריסים מקצועי – שירות מהיר ואמין, אחריות מלאה ומחירים הוגנים.">
+  <meta property="og:title" content="תיקון ושדרוג תריסים – שירות מקצועי ואמין">
+  <meta property="og:description" content="מעל 15 שנות ניסיון, 500+ לקוחות מרוצים, שירות עד הבית">
+  <!-- Use the modern installation image as the social preview -->
+  <meta property="og:image" content="gallery-modern.png">
+  <title>תיקון ושדרוג תריסים – שירות מקצועי ואמין</title>
+  <style>
+    /* Base reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      line-height: 1.6;
+      direction: rtl;
+    }
+    h1, h2, h3 {
+      color: #ffa500;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .hero {
+      background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,165,0,0.2));
+      border-radius: 20px;
+      padding: 60px 20px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #ff6b35, #ffa500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      color: #ccc;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      color: #ffa500;
+      font-weight: 600;
+    }
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .feature {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,165,0,0.2);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255,107,53,0.3);
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    /* Gallery */
+    .gallery {
+      margin-bottom: 60px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-item .caption {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      padding: 10px 15px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 0.9rem;
+    }
+    /* Testimonials */
+    .testimonials {
+      margin: 60px 0;
+      background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,165,0,0.1));
+      border-radius: 20px;
+      padding: 40px 20px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .testimonial {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,165,0,0.2);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: right;
+    }
+    .testimonial .stars {
+      color: #ff6b35;
+      font-size: 1.2rem;
+    }
+    .testimonial p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .testimonial-author img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .testimonial-author strong {
+      color: #ffa500;
+    }
+    .testimonial-author span {
+      font-size: 0.8rem;
+      color: #999;
+    }
+    /* Pricing */
+    .pricing {
+      margin: 60px 0;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .pricing-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,165,0,0.2);
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255,107,53,0.3);
+    }
+    .pricing-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #ffa500;
+    }
+    .pricing-card .price-range {
+      font-size: 1.4rem;
+      margin: 10px 0;
+      color: #ff6b35;
+      font-weight: bold;
+    }
+    .pricing-card ul {
+      list-style: none;
+      margin: 10px 0;
+      padding: 0;
+    }
+    .pricing-card ul li {
+      padding: 4px 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .pricing-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 10px;
+    }
+    /* FAQ */
+    .faq {
+      margin: 60px 0;
+    }
+    .faq-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,165,0,0.2);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 15px;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-top: 10px;
+      padding-bottom: 15px;
+    }
+    /* Contact form */
+    .contact {
+      background: linear-gradient(135deg, rgba(255,107,53,0.15), rgba(255,165,0,0.15));
+      border: 1px solid rgba(255,165,0,0.2);
+      border-radius: 20px;
+      padding: 40px 20px;
+      margin-bottom: 60px;
+    }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact label {
+      font-weight: bold;
+      color: #ffa500;
+      font-size: 0.9rem;
+    }
+    .contact input, .contact textarea, .contact select {
+      padding: 10px;
+      border: 1px solid rgba(255,165,0,0.3);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 0.9rem;
+    }
+    .contact input::placeholder, .contact textarea::placeholder {
+      color: #999;
+    }
+    .contact button {
+      padding: 12px;
+      background: linear-gradient(135deg, #ff6b35, #ffa500);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .contact button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(255,107,53,0.4);
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero-badges {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>🔧 תיקון ושדרוג תריסים מקצועי</h1>
+      <p class="subtitle">שירות מהיר, אמין ומקצועי לכל סוגי התריסים</p>
+      <div class="hero-badges">
+        <span>⭐ מעל 15 שנות ניסיון</span>
+        <span>🏠 שירות עד הבית</span>
+        <span>💯 אחריות מלאה</span>
+        <span>📞 052‑723‑7064</span>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature">
+        <div class="feature-icon">⏱️</div>
+        <h3>זמינות מיידית</h3>
+        <p>הגעה תוך 24 שעות לכל הארץ</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛠️</div>
+        <h3>תיקון כל הסוגים</h3>
+        <p>תריסים חשמליים, ידניים, גלילה ועוד</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✅</div>
+        <h3>אחריות מורחבת</h3>
+        <p>שנת אחריות מלאה על כל עבודה</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💰</div>
+        <h3>מחירים הוגנים</h3>
+        <p>הצעת מחיר שקופה ללא עלויות נסתרות</p>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+      <h2 class="section-title">העבודות שלנו</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="gallery-modern.png" alt="התקנת תריס חשמלי מודרני">
+          <div class="caption">התקנת תריס חשמלי מודרני</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-before-after.png" alt="שדרוג תריסי אלומיניום">
+          <div class="caption">שדרוג תריסי אלומיניום</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-team.png" alt="כל סוגי התיקונים">
+          <div class="caption">כל סוגי התיקונים</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <h2 class="section-title">לקוחות ממליצים</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>שירות מדהים! הגיעו במהירות ותיקנו את התריס התקוע. מקצועיים ואדיבים.</p>
+          <div class="testimonial-author">
+            <img src="review-woman1.png" alt="לקוחה מרוצה">
+            <div>
+              <strong>רונית כהן</strong><br>
+              <span>תל אביב</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>שדרגו לי את התריסים לחשמליים ועשו עבודה נקייה. מומלץ מאוד!</p>
+          <div class="testimonial-author">
+            <img src="review-woman2.png" alt="לקוחה מרוצה">
+            <div>
+              <strong>שרה ברק</strong><br>
+              <span>הרצליה</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>מחיר הוגן ושירות מדהים. כבר המלצתי לכל השכנים!</p>
+          <div class="testimonial-author">
+            <img src="review-man1.png" alt="לקוח מרוצה">
+            <div>
+              <strong>יוסי פרץ</strong><br>
+              <span>פתח תקווה</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>הגיעו בזמן, הסבירו כל דבר בסבלנות והתריס עובד כמו חדש.</p>
+          <div class="testimonial-author">
+            <img src="review-man2.png" alt="לקוח מרוצה">
+            <div>
+              <strong>משה לוי</strong><br>
+              <span>ראשון לציון</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+      <h2 class="section-title">מחירון שקוף וברור</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>החלפת רצועה</h3>
+          <div class="price-range">₪150 – ₪250</div>
+          <ul>
+            <li>כולל רצועה חדשה</li>
+            <li>התקנה מקצועית</li>
+            <li>בדיקת תקינות המערכת</li>
+            <li>אחריות לשנה</li>
+          </ul>
+          <p class="pricing-note">הפתרון המהיר והזול ביותר</p>
+        </div>
+        <div class="pricing-card">
+          <h3>תיקון מנוע חשמלי</h3>
+          <div class="price-range">₪350 – ₪600</div>
+          <ul>
+            <li>אבחון מלא של התקלה</li>
+            <li>תיקון או החלפת רכיבים</li>
+            <li>כיוון וכיול המנוע</li>
+            <li>בדיקת שלט ומפסקים</li>
+          </ul>
+          <p class="pricing-note">מחזיר את התריס לפעילות מלאה</p>
+        </div>
+        <div class="pricing-card">
+          <h3>החלפת מנוע לחשמלי</h3>
+          <div class="price-range">₪800 – ₪1,500</div>
+          <ul>
+            <li>מנוע חדש איכותי</li>
+            <li>התקנה מלאה</li>
+            <li>שלט רחוק חדש</li>
+            <li>אחריות ל‑3 שנים על המנוע</li>
+          </ul>
+          <p class="pricing-note">שדרוג משמעותי לנוחות מקסימלית</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+      <h2 class="section-title">שאלות ותשובות נפוצות</h2>
+      <div class="faq-item">
+        <div class="faq-question">כמה זמן לוקח תיקון תריס סטנדרטי?<span>+</span></div>
+        <div class="faq-answer"><p>רוב התיקונים נמשכים בין 30 דקות לשעה. עבודות מורכבות יותר יכולות לקחת עד 2‑3 שעות.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">האם אתם נותנים אחריות על העבודה?<span>+</span></div>
+        <div class="faq-answer"><p>בהחלט! אנו נותנים שנת אחריות מלאה על כל עבודה שאנו מבצעים.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">האם אתם זמינים לשירותי חירום?<span>+</span></div>
+        <div class="faq-answer"><p>כן, אנו זמינים 24/7 למקרי חירום בתוספת תשלום בשעות החריגות.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">האם כדאי לשדרג תריס ידני לחשמלי?<span>+</span></div>
+        <div class="faq-answer"><p>שדרוג לתריס חשמלי משפר משמעותית את הנוחות והבטיחות, במיוחד בתריסים כבדים.</p></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+      <h2 class="section-title">קבלו הצעת מחיר חינם!</h2>
+      <form id="contactForm">
+        <label for="name">שם מלא *</label>
+        <input type="text" id="name" name="name" required placeholder="הכנס שם מלא">
+        <label for="phone">טלפון *</label>
+        <input type="tel" id="phone" name="phone" required placeholder="050-1234567">
+        <label for="service">סוג השירות *</label>
+        <select id="service" name="service" required>
+          <option value="">בחר סוג שירות</option>
+          <option value="תיקון תריס חשמלי">תיקון תריס חשמלי</option>
+          <option value="תיקון תריס ידני">תיקון תריס ידני</option>
+          <option value="החלפת רצועה">החלפת רצועה</option>
+          <option value="שדרוג מנוע">שדרוג מנוע</option>
+          <option value="תיקון תריס תקוע">תיקון תריס תקוע</option>
+          <option value="התקנה חדשה">התקנה חדשה</option>
+          <option value="אחר">אחר</option>
+        </select>
+        <label for="message">הערות נוספות</label>
+        <textarea id="message" name="message" rows="4" placeholder="תאר את הבעיה או השירות הנדרש"></textarea>
+        <button type="submit">📱 שלח לוואטסאפ</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align:center; padding:20px 0; border-top: 1px solid rgba(255,255,255,0.1);">
+      <p>© 2025 תיקון ושדרוג תריסים – כל הזכויות שמורות</p>
+    </footer>
+  </div>
+
+  <script>
+    // FAQ accordion behaviour
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+    // WhatsApp sending (simple redirect)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value || 'אין';
+      const whatsappNumber = '972527237064';
+      const text = `*פניה חדשה מהאתר*%0A%0A*שם:* ${name}%0A*טלפון:* ${phone}%0A*סוג שירות:* ${service}%0A*הערות:* ${message}`;
+      const url = `https://wa.me/${whatsappNumber}?text=${text}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
