@@ -298,24 +298,23 @@
         font-size: 0.9rem;
       }
     }
-        /* Ensure dropdown options visible */
-        select option {
-            color: #000;
-        }
-
   </style>
 </head>
 <body>
   <div class="container">
     <!-- Hero Section -->
     <section class="hero">
+      <div class="hero-logo" style="margin-bottom: 20px;">
+        <img src="assets/images/logo.png" alt="לוגו תריס-טק" style="max-width: 200px;">
+      </div>
       <h1>🔧 תיקון ושדרוג תריסים מקצועי</h1>
       <p class="subtitle">שירות מהיר, אמין ומקצועי לכל סוגי התריסים</p>
       <div class="hero-badges">
         <span>⭐ מעל 15 שנות ניסיון</span>
         <span>🏠 שירות עד הבית</span>
         <span>💯 אחריות מלאה</span>
-<span dir="ltr">📞 052-723-7064</span></div>>
+        <span dir="ltr">📞 052-723-7064</span>
+      </div>
     </section>
 
     <!-- Features Section -->
@@ -480,11 +479,10 @@
         <label for="name">שם מלא *</label>
         <input type="text" id="name" name="name" required placeholder="הכנס שם מלא">
         <label for="phone">טלפון *</label>
-     <input type="tel" id="phone" name="phone" required placeholder="050-1234567" dir="ltr" style="direction:ltr; text-align:left;">
-
+        <input type="tel" id="phone" name="phone" required placeholder="050-1234567" dir="ltr" style="direction:ltr; text-align:left;">
         <label for="service">סוג השירות *</label>
-        <select id="service" style="color:#fff;" name=service" requi>red>
-        <option value="" disabled selected hidden>בחר סוג שירות</option>
+        <select id="service" name="service" required style="color:#fff;">
+          <option value="">בחר סוג שירות</option>
           <option value="תיקון תריס חשמלי">תיקון תריס חשמלי</option>
           <option value="תיקון תריס ידני">תיקון תריס ידני</option>
           <option value="החלפת רצועה">החלפת רצועה</option>
@@ -500,8 +498,12 @@
     </section>
 
     <!-- Footer -->
-    <footer style="text-align:center; padding:20px 0; border-top: 1px solid rgba(255,255,255,0.1);">
-      <p>© 2025 תיקון ושדרוג תריסים – כל הזכויות שמורות</p>
+    <footer style="text-align:center; padding:30px 0; border-top: 2px solid rgba(255,255,255,0.1);">
+      <div style="margin-bottom: 20px;">
+        <img src="assets/images/logo.png" alt="לוגו תריס-טק" style="max-width: 150px;">
+      </div>
+      <a href="tel:0527237064" class="phone-cta">📲 חייגו עכשיו: 052-723-7064</a>
+      <p style="margin-top: 20px; color: #888;">© 2025 תיקון ושדרוג תריסים – כל הזכויות שמורות</p>
     </footer>
   </div>
 
