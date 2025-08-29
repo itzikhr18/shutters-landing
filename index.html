@@ -234,6 +234,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 12px;
     }
     .faq-answer {
       max-height: 0;
@@ -298,6 +299,38 @@
         font-size: 0.9rem;
       }
     }
+    /* FAQ WhatsApp actions */
+    .faq-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-inline-start: auto;
+    }
+    .faq-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: #111;
+      box-shadow: 0 2px 10px rgba(255,107,53,0.25);
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .faq-wa:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255,107,53,0.35);
+    }
+    @media (max-width: 600px) {
+      .faq-wa {
+        font-size: 0.85rem;
+        padding: 6px 8px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -305,7 +338,7 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-logo" style="margin-bottom: 20px;">
-        <img src="assets/images/logo.png" alt="לוגו תריס-טק" style="max-width: 200px;">
+        <img src="assets/images/logo_resized400.png" alt="לוגו תריס-תק" style="max-width: 200px;">
       </div>
       <h1>🔧 תיקון ושדרוג תריסים מקצועי</h1>
       <p class="subtitle">שירות מהיר, אמין ומקצועי לכל סוגי התריסים</p>
@@ -507,7 +540,7 @@
     <!-- Footer -->
     <footer style="text-align:center; padding:30px 0; border-top: 2px solid rgba(255,255,255,0.1);">
       <div style="margin-bottom: 20px;">
-        <img src="assets/images/logo.png" alt="לוגו תריס-טק" style="max-width: 150px;">
+        <img src="assets/images/logo_resized400.png" alt="לוגו תריס-תק" style="max-width: 150px;">
       </div>
       <a href="tel:0527237064" class="phone-cta">📲 חייגו עכשיו: 052-723-7064</a>
       <p style="margin-top: 20px; color: #888;">© 2025 תיקון ושדרוג תריסים – כל הזכויות שמורות</p>
@@ -515,6 +548,8 @@
   </div>
 
   <script>
+    const whatsappNumber = '972527237064';
+
     // FAQ accordion behaviour
     document.querySelectorAll('.faq-question').forEach(question => {
       question.addEventListener('click', () => {
@@ -529,10 +564,32 @@
       const phone = document.getElementById('phone').value;
       const service = document.getElementById('service').value;
       const message = document.getElementById('message').value || 'אין';
-      const whatsappNumber = '972527237064';
       const text = `*פניה חדשה מהאתר*%0A%0A*שם:* ${name}%0A*טלפון:* ${phone}%0A*סוג שירות:* ${service}%0A*הערות:* ${message}`;
       const url = `https://wa.me/${whatsappNumber}?text=${text}`;
       window.open(url, '_blank');
+    });
+
+    // Add WhatsApp buttons to FAQ questions
+    document.querySelectorAll('.faq-item .faq-question').forEach(question => {
+      // Avoid duplicating buttons if script runs multiple times
+      if (!question.querySelector('.faq-actions')) {
+        const actions = document.createElement('div');
+        actions.className = 'faq-actions';
+        const waBtn = document.createElement('a');
+        waBtn.className = 'faq-wa';
+        waBtn.href = '#';
+        waBtn.textContent = 'ווטסאפ 📲';
+        waBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const questionText = question.childNodes[0].textContent.trim();
+          const msg = `שלום, יש לי שאלה לגבי: ${questionText}`;
+          const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
+          window.open(url, '_blank');
+        });
+        actions.appendChild(waBtn);
+        question.appendChild(actions);
+      }
     });
   </script>
 </body>
