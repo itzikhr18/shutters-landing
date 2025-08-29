@@ -481,15 +481,22 @@
         <label for="phone">טלפון *</label>
         <input type="tel" id="phone" name="phone" required placeholder="050-1234567" dir="ltr" style="direction:ltr; text-align:left;">
         <label for="service">סוג השירות *</label>
+        <!--
+          When the form is rendered on desktop, some browsers inherit the select's text colour
+          (white) onto the option elements. Because the option list's default background is
+          light, white text becomes invisible until hovered. To ensure the options are legible
+          across devices, explicitly set a dark text colour on each option. The select itself
+          retains a white colour for the currently‑selected value.
+        -->
         <select id="service" name="service" required style="color:#fff;">
-          <option value="">בחר סוג שירות</option>
-          <option value="תיקון תריס חשמלי">תיקון תריס חשמלי</option>
-          <option value="תיקון תריס ידני">תיקון תריס ידני</option>
-          <option value="החלפת רצועה">החלפת רצועה</option>
-          <option value="שדרוג מנוע">שדרוג מנוע</option>
-          <option value="תיקון תריס תקוע">תיקון תריס תקוע</option>
-          <option value="התקנה חדשה">התקנה חדשה</option>
-          <option value="אחר">אחר</option>
+          <option value="" style="color:#000;">בחר סוג שירות</option>
+          <option value="תיקון תריס חשמלי" style="color:#000;">תיקון תריס חשמלי</option>
+          <option value="תיקון תריס ידני" style="color:#000;">תיקון תריס ידני</option>
+          <option value="החלפת רצועה" style="color:#000;">החלפת רצועה</option>
+          <option value="שדרוג מנוע" style="color:#000;">שדרוג מנוע</option>
+          <option value="תיקון תריס תקוע" style="color:#000;">תיקון תריס תקוע</option>
+          <option value="התקנה חדשה" style="color:#000;">התקנה חדשה</option>
+          <option value="אחר" style="color:#000;">אחר</option>
         </select>
         <label for="message">הערות נוספות</label>
         <textarea id="message" name="message" rows="4" placeholder="תאר את הבעיה או השירות הנדרש"></textarea>
